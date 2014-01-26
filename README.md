@@ -1,6 +1,6 @@
-# Curator-Clock-Chrome-Extention 小海嚴選正妹報時
+# Curator-Clock-Chrome-Extension 小海嚴選正妹報時
 
-小海嚴選正妹報時是一個 Chrome Extention 應用，安裝小海嚴選正妹報時後，我們將會每個小時會自動提示你休息一下好好看看正妹，讓疲勞的你再度充滿元氣！
+小海嚴選正妹報時是一個 Chrome Extension 應用，安裝小海嚴選正妹報時後，我們將會每個小時會自動提示你休息一下好好看看正妹，讓疲勞的你再度充滿元氣！
 
 本應用也是一個開源軟體，請各位開發者踴躍加入開發，讓小海嚴選正妹報時變得更好！
 
@@ -18,8 +18,8 @@
 看起來像這樣
 ==============
 
-![圖片](https://raw2.github.com/fukuball/Curator-Clock-Chrome-Extention/master/screenshot/screenshot1.png) 
-![圖片](https://raw2.github.com/fukuball/Curator-Clock-Chrome-Extention/master/screenshot/screenshot2.png) 
+![圖片](https://raw2.github.com/fukuball/Curator-Clock-Chrome-Extension/master/screenshot/screenshot1.png) 
+![圖片](https://raw2.github.com/fukuball/Curator-Clock-Chrome-Extension/master/screenshot/screenshot2.png) 
 
 ## License
 Copyright (c) 2013 fukuball
