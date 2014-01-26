@@ -16,8 +16,8 @@
 看起來像這樣
 ==============
 
-![圖片](https://raw.github.com/fukuball/Curator-Clock-Chrome-Extention/tree/master/screenshot/screenshot1.png) 
-![圖片](https://raw.github.com/fukuball/Curator-Clock-Chrome-Extention/tree/master/screenshot/screenshot2.png) 
+![圖片](https://raw2.github.com/fukuball/Curator-Clock-Chrome-Extention/master/screenshot/screenshot1.png) 
+![圖片](https://raw2.github.com/fukuball/Curator-Clock-Chrome-Extention/master/screenshot/screenshot2.png) 
 
 ## License
 Copyright (c) 2013 fukuball
