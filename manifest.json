@@ -3,7 +3,7 @@
 
   "name": "小海嚴選正妹報時",
   "description": "小海嚴選正妹報時是一個 Chrome Extension 應用，安裝小海嚴選正妹報時後，我們將會每個小時會自動提示你休息一下好好看看正妹，讓疲勞的你再度充滿元氣！",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "icons": { "128": "icon-92.png" },
   "author": "fukuball",
   "browser_action": {
