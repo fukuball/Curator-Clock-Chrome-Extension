@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "小海嚴選正妹報時",
+  "description": "小海嚴選正妹報時",
+  "version": "0.0.1",
+  "icons": { "128": "icon-92.png" },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "curator-clock.html"
+  },
+  "background": {
+    "scripts": ["curator-clock-background.js"]
+  },
+  "permissions": [
+    "http://curator.im/"
+  ]
+}

@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>小海嚴選正妹報時</title>
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+      #clock {
+        width: 340px;
+        padding: 0px;
+        margin: 10px 0px 0px 0px;
+      }
+      body {
+        min-width: 340px;
+        min-height: 300px;
+        overflow-x: hidden;
+        margin: 10px;
+      }
+      a, a:hover, a:active, a:focus {
+        color: #428bca;
+        text-decoration: none;
+        outline: 0px;
+      }
+      .clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+      }
+      .clearfix {
+        display: inline-block;
+      }
+      html[xmlns] .clearfix {
+        display: block;
+      }
+      * html .clearfix {
+        height: 1%;
+      }
+      #girl-of-the-day-block {
+        width: 100%;
+        background-color : #EEE;
+      }
+      #girl-of-the-day-block div {
+        background-color : #EEE;
+        margin: 5px auto;
+        height : 200px;
+        width : 200px;
+        line-height : 200px;
+        text-align : center;
+        overflow: hidden;
+      }
+      #girl-of-the-day-block img {
+        width : 200px;
+        vertical-align : middle;
+      }
+      #girl-stream-block {
+        margin-top: 10px;
+      }
+      #girl-stream-block div {
+        background-color : #EEE;
+        float: left;
+        margin: 5px;
+        height : 75px;
+        width : 75px;
+        line-height : 75px;
+        text-align : center;
+        overflow: hidden;
+      }
+      #girl-stream-block img {
+        width : 75px;
+        vertical-align : middle;
+      }
+      .speech-bubble {
+        position: relative;
+        padding: 15px;
+        margin: 25px 0 0.5em;
+        color: #333;
+        background: #eee;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+      }
+      .speech-bubble:before {
+        position: absolute;
+        top: -60px;
+        left: 0;
+        width: 155px;
+        height: 36px;
+        display: block;
+      }
+      .speech-bubble:after {
+        content: "";
+        position: absolute;
+        top: -30px;
+        left: 50px;
+        border: 15px solid transparent;
+        border-bottom-color: #eee;
+        display: block;
+        width: 0;
+      }
+      .loader{
+        position: fixed;
+        z-index: 3;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin-top: -30px;
+        width: 60px;
+        height: 60px;
+        list-style: none;
+      }
+
+      @-webkit-keyframes 'loadbars' {
+        0%{
+          height: 10px;
+          margin-top: 25px;
+        }
+        50%{
+          height:50px;
+          margin-top: 0px;
+        }
+        100%{
+          height: 10px;
+          margin-top: 25px;
+        }
+      }
+
+      .loader li{
+          background-color: #FFFFFF;
+          width: 10px;
+          height: 10px;
+          float: right;
+          margin-right: 5px;
+          box-shadow: 0px 100px 20px rgba(0,0,0,0.2);
+        }
+      .loader li:first-child{
+        -webkit-animation: loadbars 0.6s cubic-bezier(0.645,0.045,0.355,1) infinite 0s;
+      }
+      .loader li:nth-child(2){
+        -webkit-animation: loadbars 0.6s ease-in-out infinite -0.2s;
+      }
+      .loader li:nth-child(3){
+        -webkit-animation: loadbars 0.6s ease-in-out infinite -0.4s;
+      }
+    </style>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="curator-clock.js"></script>
+  </head>
+  <body>
+    <div id="content-block">
+      <div id="top-content-block" style="display:none;">
+        <div id="girl-of-the-day-block">
+        </div>
+        <blockquote class="speech-bubble">
+          <p id="phrase-block">
+          </p>
+        </blockquote>
+        <div id="clock" class="light">
+          <div class="display">
+            <div class="weekdays"></div>
+            <div class="ampm"></div>
+            <div class="alarm"></div>
+            <div class="digits"></div>
+          </div>
+        </div>
+      </div>
+      <div id="bottom-content-block" style="display:none;">
+        <div id="girl-stream-block" class="clearfix">
+        </div>
+      </div>
+    </div>
+    <div id="loading-block">
+      <ul class="loader">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </body>
+</html>
+
