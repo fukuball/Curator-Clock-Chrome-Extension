@@ -1,3 +1,12 @@
+Date.prototype.yyyymmdd = function() {         
+                            
+    var yyyy = this.getFullYear().toString();                                    
+    var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based         
+    var dd  = this.getDate().toString();             
+                        
+    return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+};
+
 Date.prototype.timeHourMinute = function () {
     return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
 }
@@ -31,6 +40,12 @@ function phraseArray() {
     ];
 }
 
+var girl_of_the_day_id = 0;
+var girl_of_the_day_name = "";
+var girl_of_the_day_image = "";
+var girl_of_the_day_url = "";
+var girl_of_the_day_date = "";
+
 function getGirlOfTheDay() {
 
     $.ajax({
@@ -47,61 +62,59 @@ function getGirlOfTheDay() {
         },
         success: function(data) {
 
-            var girl_of_the_day = shuffle(data.results);
-
-            $("#girl-of-the-day-block").append(
-                '<div><img src="'+girl_of_the_day[0].image+'" alt="'+girl_of_the_day[0].name+'"></div>'
-            );
-
             var newDate = new Date();
             var current_hour_minute = newDate.timeHourMinute();
+
+            girl_of_the_day_id = data.results[0].id;
+            girl_of_the_day_name = data.results[0].name;
+            girl_of_the_day_image = data.results[0].image;
+            girl_of_the_day_url = data.results[0].url;
+            girl_of_the_day_date = data.results[0].date;
 
             var phrase = shuffle(phraseArray());
 
             $('#phrase-block').html(
-                girl_of_the_day[0].name+'：'+
+                girl_of_the_day_name+'：'+
                 '現在時間 '+current_hour_minute+'，'+
                 phrase[0]
             );
 
-            $('#top-content-block').imagesLoaded( function() {
-                $('#top-content-block').css('display', 'block');
-                $('#loading-block').css('display', 'none');
+            $.ajax({
+                
+                url: "http://curator.im/api/girl_of_the_day/"+girl_of_the_day_date+'/',
+                type: "GET",
+                data: {
+                    token : "53b7c0f21db84334b9aaaaccb7d2538e",
+                    format : "json",
+                },
+                dataType: "json",
+                beforeSend: function( xhr ) {
+                    //console.log('loading');
+                },
+                success: function(data) {
+
+                    var newDate = new Date();
+                    var current_hour = newDate.getHours();
+                    var current_hour_image_index = parseInt(current_hour)%data.length;
+
+                    girl_of_the_day_image = data[current_hour_image_index].image;
+
+                    $("#girl-of-the-day-block").html(
+                        '<div>'+
+                            '<a href="'+girl_of_the_day_url+'" target="_blank">'+
+                                '<img src="'+girl_of_the_day_image+'" alt="'+girl_of_the_day_name+'">'+
+                            '</a>'+
+                        '</div>'
+                    );
+
+                    $('#top-content-block').imagesLoaded( function() {
+                        $('#top-content-block').css('display', 'block');
+                        $('#loading-block').css('display', 'none');
+                    });
+
+                }
+
             });
-
-        }
-
-    });
-
-}
-
-function getGirlStream() {
-
-    $.ajax({
-    
-        url: "http://curator.im/api/stream/",
-        type: "GET",
-        data: {
-            token : "53b7c0f21db84334b9aaaaccb7d2538e",
-            format : "json",
-        },
-        dataType: "json",
-        beforeSend: function( xhr ) {
-            //console.log('loading');
-        },
-        success: function(data) {
-            
-            var girl_stream = shuffle(data.results);
-
-            for (var i=0; i<8; i++) {
-                $("#girl-stream-block").append(
-                    '<div><img src="'+girl_stream[i].image+'" alt="'+girl_stream[i].name+'"></div>'
-                );
-            }   
-
-            $('#bottom-content-block').imagesLoaded( function() {
-                $('#bottom-content-block').css('display', 'block');
-            }); 
 
         }
 
@@ -112,7 +125,6 @@ function getGirlStream() {
 function getGirls() {
 
     getGirlOfTheDay();
-    getGirlStream();
     clearBadge();
 
 }
